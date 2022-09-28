@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:practical_work_1/pages/page_four.dart';
+import 'package:practical_work_1/pages/MeditateSecond.dart';
 import 'package:practical_work_1/pages/page_one.dart';
-import 'package:practical_work_1/pages/page_three.dart';
-import 'package:practical_work_1/pages/page_two.dart';
+import 'package:practical_work_1/pages/Meditate.dart';
+import 'package:practical_work_1/pages/Welcome.dart';
 
 void main() {
   runApp(const MyApp());
