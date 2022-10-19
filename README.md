@@ -1,16 +1,12 @@
-# practical_work_2
+# Практическая работа №2
+## Тема: Реализовать класс который отвечает за базу данных
+### Цель работы: необходимо реализовать следующие функции:
+- init - инициализация базы данных для всех платформ
+- onCreateTable - создание таблиц 
+- onUpdateTable - обновление таблиц
+- onInitTable - заполнение таблиц данными
+- onDropDataBase - удаление базы данных 
 
-A new Flutter project.
+### Ход работы:
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Вывод: в ходе работы реализовала инициализацию базы данных для всех платформ, задала создание таблиц и их обновление, и заполнение. Прописала удаление базы данных.
