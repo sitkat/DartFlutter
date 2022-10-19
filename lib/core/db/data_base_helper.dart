@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'package:practical_work_2/common/data_base_request.dart';
+import 'package:practical_work_2/data/model/category.dart';
 import 'package:practical_work_2/data/model/role.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:path/path.dart';
+
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class DataBaseHelper {
   static final DataBaseHelper instance = DataBaseHelper._instance();
@@ -22,7 +25,13 @@ class DataBaseHelper {
     _pathDB = join(_appDocumnetDirectory.path, "clothesstore.db");
 
     if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      // TODO
+      sqfliteFfiInit();
+      dataBase = await databaseFactoryFfi.openDatabase(_pathDB,
+          options: OpenDatabaseOptions(
+              onUpgrade: (db, oldVersion, newVersion) => onUpdateTable(db),
+              onCreate: (db, version) async {
+                await onCreateTable(db);
+              }));
     } else {
       dataBase = await openDatabase(_pathDB,
           onUpgrade: (db, oldVersion, newVersion) => onUpdateTable(db),
@@ -56,6 +65,10 @@ class DataBaseHelper {
     try {
       db.insert(DataBaseRequest.tableRole, Role(role: 'Администратор').toMap());
       db.insert(DataBaseRequest.tableRole, Role(role: 'Пользователь').toMap());
+
+      // db.insert(DataBaseRequest.tableCategory, Category(name: 'Верхняя одежда').toMap());
+      // db.insert(DataBaseRequest.tableCategory, Category(name: 'Шорты').toMap());
+      // db.insert(DataBaseRequest.tableCategory, Category(name: 'Обувь').toMap());
     } on DatabaseException catch (e) {
       print(e.result);
     }
@@ -64,6 +77,7 @@ class DataBaseHelper {
   Future<void> onDropDataBase() async {
     dataBase.close();
     if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+      databaseFactoryFfi.deleteDatabase(_pathDB);
     } else {
       deleteDatabase(_pathDB);
     }
