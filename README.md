@@ -1,16 +1,37 @@
-# practical_work_2
+# Практическая работа №2
+## Тема: Реализовать регистрацию и авторизацию пользователя
+### Цель работы: необхнеобходимо провалидировать поля и реализовать переход на экраны в зависимости от роли.
 
-A new Flutter project.
+### Ход работы:
+Экран регистрации
+На данном экране расположены 3 текстовых поля (логин, пароль и подтверждение пароля). 
+При нажатии на кнопку «Зарегистрироваться», пользователь подвергнется валидации и при пройденной проверке данные занесутся в БД, и он перейдет на экран авторизации.
+При нажатии на кнопку «Войти», пользователь перейдет на экран авторизации.
+Для валадиции полей использовались Regex, length, null и !=.
+ ![image](https://user-images.githubusercontent.com/94557992/201989418-8a2db449-348e-416d-a466-d4798bee573c.png)
 
-## Getting Started
+Рисунок 1 – Валидация пустых полей
+ ![image](https://user-images.githubusercontent.com/94557992/201989444-0ee8dc77-3385-4945-a92d-b8d7cc6c6257.png)
 
-This project is a starting point for a Flutter application.
+Рисунок 2 – Валидация паролей
+ ![image](https://user-images.githubusercontent.com/94557992/201989452-80db1a83-512f-45e5-b2da-c85629fac500.png)
 
-A few resources to get you started if this is your first Flutter project:
+Рисунок 3 – Валидация логина
+ ![image](https://user-images.githubusercontent.com/94557992/201989459-9350ea6b-b3c6-4063-92f6-a2570f87cf10.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Рисунок 4 – Валидация длины пароля
+Экран авторизации
+На данном экране расположены 2 текстовых поля (логин и пароль). 
+При нажатии на кнопку «Войти», пользователь подвергнется валидации и контролю данных. При пройденной проверке пользователь перейдет на домашний экран в зависимости от роли.
+При нажатии на кнопку «Регистрация», пользователь перейдет на экран регистрации.
+ ![image](https://user-images.githubusercontent.com/94557992/201989476-aae2c4a1-7e95-46c6-9c99-44f6e46495ae.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Рисунок 5 – Экран авторизации
+ ![image](https://user-images.githubusercontent.com/94557992/201989483-296812aa-b711-407a-844a-07febffcc778.png)
+
+Рисунок 6 – Проверка полей
+ ![image](https://user-images.githubusercontent.com/94557992/201989497-e6261c16-2734-480a-9d54-c8c681b1672e.png)
+
+Рисунок 7 – Домашний экран
+
+Вывод: в ходе работы провалидировала поля и реализовала переход на экраны в зависимости от роли.
