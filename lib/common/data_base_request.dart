@@ -5,8 +5,8 @@ abstract class DataBaseRequest {
       'CREATE TABLE "$tableRole" ("id" INTEGER,"role" TEXT NOT NULL UNIQUE, PRIMARY KEY("id" AUTOINCREMENT))';
 
   /// Запрос для создания таблицы Users
-  static const String _createTableUsers =
-      'CREATE TABLE "$tableUsers" ("id"	INTEGER,"login"	TEXT NOT NULL UNIQUE,"password"	TEXT NOT NULL,"id_role"	INTEGER,FOREIGN KEY("id_role") REFERENCES "Role"("id"),PRIMARY KEY("id"))';
+  static const String _createTableUser =
+      'CREATE TABLE "$tableUser" ("id"	INTEGER,"login"	TEXT NOT NULL UNIQUE,"password"	TEXT NOT NULL,"id_role"	INTEGER,FOREIGN KEY("id_role") REFERENCES "Role"("id"),PRIMARY KEY("id"))';
 
   /// Запрос для создания таблицы Category
   static const String _createTableCategory =
@@ -30,15 +30,15 @@ abstract class DataBaseRequest {
 
   /// Запрос для создания таблицы Product
   static const String _createTableProduct =
-      'CREATE TABLE "$tableProduct" ("id"	INTEGER,"name"	TEXT NOT NULL, "cost"	decimal(8,2), "id_category"	INTEGER,FOREIGN KEY("id_category") REFERENCES "Category"("id"), "id_size"	INTEGER,FOREIGN KEY("id_size") REFERENCES "Size"("id"), "id_brand"	INTEGER,FOREIGN KEY("id_brand") REFERENCES "Brand"("id"), "id_color"	INTEGER,FOREIGN KEY("id_color") REFERENCES "Color"("id"), "id_season"	INTEGER,FOREIGN KEY("id_season") REFERENCES "Season"("id"), PRIMARY KEY("id"))';
+      'CREATE TABLE "$tableProduct" ("id" INTEGER NOT NULL, "name" TEXT NOT NULL, "cost"	INTEGER NOT NULL, "id_category"	INTEGER NOT NULL, "id_size"	INTEGER NOT NULL,  "id_brand"	INTEGER NOT NULL, "id_color" INTEGER NOT NULL, "id_season"	INTEGER NOT NULL, PRIMARY KEY("id" AUTOINCREMENT), FOREIGN KEY("id_category") REFERENCES "Category"("id"), FOREIGN KEY("id_size") REFERENCES "Size"("id"), FOREIGN KEY("id_brand") REFERENCES "Brand"("id"), FOREIGN KEY("id_color") REFERENCES "Color"("id"), FOREIGN KEY("id_season") REFERENCES "Season"("id"))';
 
   /// Запрос для создания таблицы Basket
   static const String _createTableBasket =
-      'CREATE TABLE "$tableBasket" ("id"	INTEGER, "id_product"	INTEGER,FOREIGN KEY("id_product") REFERENCES "Product"("id"), "id_user"	INTEGER,FOREIGN KEY("id_user") REFERENCES "Users"("id"), PRIMARY KEY("id"))';
+      'CREATE TABLE "$tableBasket" ("id" INTEGER,"id_product" INTEGER NOT NULL, "id_user" INTEGER NOT NULL, PRIMARY KEY("id" AUTOINCREMENT), FOREIGN KEY("id_product") REFERENCES "Product"("id"), FOREIGN KEY("id_user") REFERENCES "Users"("id"))';
   
   /// Запрос для создания таблицы Orders
-  static const String _createTableOrders =
-      'CREATE TABLE "$tableOrders" ("id"	INTEGER, "cost"	decimal(8,2), "address"	TEXT NOT NULL, "id_basket"	INTEGER,FOREIGN KEY("id_basket") REFERENCES "Basket"("id"), PRIMARY KEY("id"))';
+  static const String _createTableOrder =
+      'CREATE TABLE "$tableOrder" ("id"	INTEGER,"cost" INTEGER NOT NULL,"address" TEXT NOT NULL,"id_basket" INTEGER NOT NULL, PRIMARY KEY("id" AUTOINCREMENT), FOREIGN KEY("id_basket") REFERENCES "Basket"("id"))';
   //ON DELETE CASCADE
 
   static String deleteTable(String table) => 'DROP TABLE $table';
@@ -53,7 +53,7 @@ abstract class DataBaseRequest {
   ///
   /// Поля таблицы: Логин, Пароль, Роль
 
-  static const String tableUsers = 'Users';
+  static const String tableUser = 'User';
 
   static const String tableCategory = 'Category';
   static const String tableSize= 'Size';
@@ -62,12 +62,12 @@ abstract class DataBaseRequest {
   static const String tableSeason = 'Season';
 
   static const String tableProduct = 'Product';
-  static const String tableBasket = 'Basker';
-  static const String tableOrders = 'Basker';
+  static const String tableBasket = 'Basket';
+  static const String tableOrder = 'Order';
 
   static const List<String> tableList = [
     tableRole,
-    tableUsers,
+    tableUser,
     tableCategory,
     tableSize,
     tableBrand,
@@ -75,12 +75,12 @@ abstract class DataBaseRequest {
     tableSeason,
     tableProduct,
     tableBasket,
-    tableOrders,
+    tableOrder,
   ];
 
   static const List<String> tableCreateList = [
     _createTableRole,
-    _createTableUsers,
+    _createTableUser,
     _createTableCategory,
     _createTableSize,
     _createTableBrand,
@@ -88,6 +88,6 @@ abstract class DataBaseRequest {
     _createTableSeason,
     _createTableProduct,
     _createTableBasket,
-    _createTableOrders,
+    _createTableOrder,
   ];
 }
