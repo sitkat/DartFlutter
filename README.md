@@ -1,16 +1,23 @@
-# practical_work_4_1
+# Практическая работа №4
+## Тема: Создать проект с использованием Cubit
+### Цель работы: 
 
-A new Flutter project.
+### Ход работы:
+Для работы с Bloc, необходимо было поставить библиотеку: flutter_bloc: ^8.1.1 Библиотека взята с https://pub.dev/packages/flutter_bloc
+BlocBuilder — это виджет Flutter, для которого требуется функция blocи . обрабатывает создание виджета в ответ на новые состояния. очень похож, но имеет более простой API для уменьшения количества необходимого стандартного кода. Функция потенциально будет вызываться много раз и должна быть чистой функцией, которая возвращает виджет в ответ на состояние.builder, BlocBuilder, BlocBuilder, StreamBuilderbuilder.
 
-## Getting Started
+При нажатии на кнопку увеличения прибавляется 1, если тема светлая, иначе прибавляется 2.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+![image](https://user-images.githubusercontent.com/94557992/206558329-b0823aa7-7fcc-4d4e-b5ef-1aa71290d710.png)
+Рисунок 1 – Светлая тема
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+При нажатии на кнопку уменьшения отнимается 1, если тема светлая, иначе прибавляется 2.
+Кнопка смены темы располагается в правом нижем углу.
+Тема имеет два вида: темная и светлая.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+![image](https://user-images.githubusercontent.com/94557992/206558378-f99e2e49-2798-4679-8a5b-45e360985190.png)
+Рисунок 2 – Темная тема
+
+Вывод: 
